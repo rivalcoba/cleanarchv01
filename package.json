@@ -3,8 +3,10 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "node ./server/bin/www",
-    "w:d" : "babel-watch ./server/bin/www"
+    "start": "node ./dist/bin/www",
+    "w:d" : "babel-watch ./server/bin/www",
+    "clean": "rm -rf dist",
+    "b:s": "npm run clean && babel ./server --out-dir dist --copy-files" 
   },
   "dependencies": {
     "cookie-parser": "~1.4.4",
