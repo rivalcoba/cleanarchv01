@@ -1,18 +1,10 @@
-//var createError = require('http-errors');
 import createError from 'http-errors'
-// var express = require('express');
 import express from 'express'
-// var path = require('path');
 import path from 'path'
-// var cookieParser = require('cookie-parser');
 import cookieParser from 'cookie-parser'
-// var logger = require('morgan');
 import logger from 'morgan'
-
-// var indexRouter = require('./routes/index');
-import indexRouter from './routes/index'
-// var usersRouter = require('./routes/users');
-import usersRouter from './routes/users'
+import indexRouter from '@routes/index'
+import usersRouter from '@routes/users'
 
 var app = express();
 
