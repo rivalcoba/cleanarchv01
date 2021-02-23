@@ -3,8 +3,9 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "node ./dist/bin/www",
-    "w:d": "babel-watch ./server/bin/www",
+    "start": "NODE_ENV=production node ./dist/bin/www",
+    "w:d": "NODE_ENV=development babel-watch ./server/bin/www",
+    "w:s": "NODE_ENV=development webpack serve --config ./webpack.config.js --mode development",
     "clean": "rm -rf dist",
     "b:s": "npm run clean && babel ./server --out-dir dist --copy-files"
   },
@@ -23,6 +24,11 @@
     "@babel/preset-env": "^7.12.17",
     "babel-plugin-module-resolver": "^4.1.0",
     "babel-preset-minify": "^0.5.1",
-    "babel-watch": "^7.4.0"
+    "babel-watch": "^7.4.0",
+    "webpack": "^5.24.0",
+    "webpack-cli": "^4.5.0",
+    "webpack-dev-middleware": "^4.1.0",
+    "webpack-dev-server": "^3.11.2",
+    "webpack-hot-middleware": "^2.25.0"
   }
 }
