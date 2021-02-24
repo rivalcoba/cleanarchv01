@@ -5,8 +5,42 @@ import cookieParser from 'cookie-parser'
 import logger from 'morgan'
 import indexRouter from '@routes/index'
 import usersRouter from '@routes/users'
+// Webpack modules
+import webpack from 'webpack'
+import webpackDevMiddleware from 'webpack-dev-middleware'
+import webpackHotMiddleware from 'webpack-hot-middleware'
+import webpackConfig from '../webpack.dev.config'
 
 var app = express();
+// Webpack middleware
+const env = process.env.NODE_ENV || 'development';
+// Primero entrara en funcionamiento
+if(env === 'development'){
+  console.log("> Executing in Development: Webpack Hot reloading");
+  // Agregando la ruta del HMR
+  //reload=true:Enable auto reloading when changing JS files or content
+  //timeout=1000:Time from disconnecting from server to reconnecting
+  webpackConfig.entry = ['webpack-hot-middleware/client?reload=true&timeout=1000', webpackConfig.entry]
+
+  // Agregar el plugin a la configuración de desarrollo
+  // de webpack
+  webpackConfig.plugins.push(new webpack.HotModuleReplacementPlugin())
+
+  // Creando el compilador
+  const compiler = webpack(webpackConfig);
+
+  // Habilitando el middleware en express
+  app.use(webpackDevMiddleware(compiler,{
+    publicPath: webpackConfig.output.publicPath
+  }))
+
+  // Habilitando el "Webpack Hot Middleware"
+  app.use(webpackHotMiddleware(compiler))
+
+}else{
+  console.log("> Executing in Production");
+}
+
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -17,20 +51,6 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, '../public')));
-
-// Webpack modules
-import webpack from 'webpack'
-import webpackDevMiddleware from 'webpack-dev-middleware'
-import webpackHotMiddleware from 'webpack-hot-middleware'
-import webpackConfig from '../webpack.dev.config'
-
-const env = process.env.NODE_ENV || 'development';
-// Primero entrara en funcionamiento
-if(env === 'development'){
-  console.log("> Executing in Development");
-}else{
-  console.log("> Executing in Production");
-}
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
