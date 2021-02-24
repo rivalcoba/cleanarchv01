@@ -41,7 +41,6 @@ if(env === 'development'){
   console.log("> Executing in Production");
 }
 
-
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');

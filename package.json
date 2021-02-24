@@ -8,7 +8,8 @@
     "w:s": "NODE_ENV=development webpack serve --config ./webpack.dev.config.js --mode development",
     "clean": "rm -rf dist",
     "b:s": "npm run clean && babel ./server --out-dir dist --copy-files",
-    "b:c": "webpack --config ./webpack.config.js --mode production"
+    "b:c": "webpack --config ./webpack.config.js --mode production",
+    "build": "npm run b:c && npm run b:s"
   },
   "dependencies": {
     "cookie-parser": "~1.4.4",
