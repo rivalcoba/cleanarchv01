@@ -7,11 +7,12 @@ module.exports = {
   // 2. Especificando el archivo de salida
   output: {
     path: path.join(__dirname, 'public'), // 3. Ruta absoluta de la salida
-    filename: 'js/bundle.js' // 4. Nombre del archivo de salida
+    filename: 'js/bundle.js', // 4. Nombre del archivo de salida
+    publicPath: '/' //5. path publico
   },
   devServer: {
     contentBase: path.join(__dirname,'public'),
-    port: 8080,
+    port: 3000,
     host: 'localhost'
   },
   module: {
