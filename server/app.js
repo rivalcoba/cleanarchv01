@@ -18,6 +18,20 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, '../public')));
 
+// Webpack modules
+import webpack from 'webpack'
+import webpackDevMiddleware from 'webpack-dev-middleware'
+import webpackHotMiddleware from 'webpack-hot-middleware'
+import webpackConfig from '../webpack.dev.config'
+
+const env = process.env.NODE_ENV || 'development';
+// Primero entrara en funcionamiento
+if(env === 'development'){
+  console.log("> Executing in Development");
+}else{
+  console.log("> Executing in Production");
+}
+
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 

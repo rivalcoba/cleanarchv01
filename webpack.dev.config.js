@@ -1,4 +1,5 @@
 const path = require('path')
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 module.exports = {
   mode: 'development', // 0. Estableciendo que esto es para desarrollo
   // 1. Especificamos el archivo de entrada
@@ -28,7 +29,7 @@ module.exports = {
                   {
                     'modules': false,//commonjs,amd,umd,systemjs,auto
                     'useBuiltIns': 'usage',
-                    'targets': '> 0.25%, not dead',
+                    'targets': {"chrome": "80"},
                     'corejs': 3
                   }
                 ]
@@ -47,7 +48,14 @@ module.exports = {
             }
           }
         ]
+      },
+      {
+        test: /\.css$/,
+        use: [MiniCssExtractPlugin.loader,'css-loader']
       }
     ]
-  }
+  },
+  plugins: [new MiniCssExtractPlugin({
+    filename: 'styles/app.css',
+  })],
 }
