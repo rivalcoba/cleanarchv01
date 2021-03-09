@@ -1,3 +1,5 @@
 # Ignorando dependencias de node
 node_modules
 dist
+# Ignorando logs
+*.log
