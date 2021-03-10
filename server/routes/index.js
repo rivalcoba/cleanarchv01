@@ -1,9 +1,13 @@
-var express = require('express');
-var router = express.Router();
+/* eslint-disable import/no-unresolved */
+// Indexing Routes
+import home from '@routes/home';
+import users from '@routes/users';
 
-/* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express with babel and HRM' });
-});
+// Setting Routes to App
+export default (app) => {
+  // home
+  app.use('/', home);
 
-module.exports = router;
+  // users
+  app.use('/users', users);
+};

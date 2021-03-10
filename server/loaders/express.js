@@ -2,10 +2,10 @@
 import morgan from 'morgan';
 import createError from 'http-errors';
 import cookieParser from 'cookie-parser';
-import indexRouter from '@routes/index';
-import usersRouter from '@routes/users';
 import path from 'path';
 import express from 'express';
+// Routes
+import addRoutes2App from '@routes/index';
 // Webpack modules
 import webpack from 'webpack';
 import webpackDevMiddleware from 'webpack-dev-middleware';
@@ -66,8 +66,8 @@ export default ({ app }) => {
   app.use(cookieParser());
   app.use(express.static(path.join(__dirname, '../../public')));
 
-  app.use('/', indexRouter);
-  app.use('/users', usersRouter);
+  // Adding Routes
+  addRoutes2App(app);
 
   // catch 404 and forward to error handler
   app.use((req, res, next) => {

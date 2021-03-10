@@ -2,9 +2,9 @@ import express from 'express';
 
 const router = express.Router();
 
-/* GET users listing. */
+/* GET home page. */
 router.get('/', (req, res) => {
-  res.send('respond with a resource');
+  res.render('index', { title: 'Express with babel and HRM' });
 });
 
 module.exports = router;
