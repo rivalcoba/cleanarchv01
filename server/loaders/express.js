@@ -5,7 +5,7 @@ import cookieParser from 'cookie-parser';
 import path from 'path';
 import express from 'express';
 // Routes
-import addRoutes2App from '@routes/index';
+import router from '@routes/index';
 // Webpack modules
 import webpack from 'webpack';
 import webpackDevMiddleware from 'webpack-dev-middleware';
@@ -67,7 +67,7 @@ export default ({ app }) => {
   app.use(express.static(path.join(__dirname, '../../public')));
 
   // Adding Routes
-  addRoutes2App(app);
+  router.route(app);
 
   // catch 404 and forward to error handler
   app.use((req, res, next) => {
