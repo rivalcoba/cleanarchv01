@@ -6,12 +6,13 @@ import path from 'path';
 import express from 'express';
 // Routes
 import router from '@routes/index';
+// Logger
+import logger from '@common/logger';
 // Webpack modules
 import webpack from 'webpack';
 import webpackDevMiddleware from 'webpack-dev-middleware';
 import webpackHotMiddleware from 'webpack-hot-middleware';
 import webpackConfig from '../../webpack.dev.config';
-import logger from './logger';
 
 // export default loggerInstance;
 

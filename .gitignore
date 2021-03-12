@@ -3,3 +3,5 @@ node_modules
 dist
 # Ignorando logs
 *.log
+# Ignorirng enviroment files
+*.env

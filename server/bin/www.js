@@ -1,5 +1,7 @@
 #!/usr/bin/env node
-import logger from '../loaders/logger';
+/* eslint-disable import/no-unresolved */
+// Logger
+import logger from '@common/logger';
 /**
  * Module dependencies.
  */
@@ -75,6 +77,7 @@ function onListening() {
   const addr = server.address();
   const bind = typeof addr === 'string' ? `pipe ${addr}` : `port ${addr.port}`;
   debug(`Listening on ${bind}`);
+  logger.log('info', `Serving at ${bind}`);
 }
 server.listen(port);
 server.on('error', onError);

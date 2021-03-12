@@ -12,7 +12,11 @@
         "root": ["./"],
         "alias":{
           "@server" : "./server",
-          "@routes" : "./server/routes"
+          "@routes" : "./server/routes",
+          "@entities": "./server/entities",
+          "@use-cases": "./server/use-cases",
+          "@common": "./server/common",
+          "@config": "./server/config"
         }
       }
     ]
