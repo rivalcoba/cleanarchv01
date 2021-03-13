@@ -1,6 +1,7 @@
-import idea from '@entities/idea';
+/* eslint-disable import/no-unresolved */
+import Idea from '@entities/idea';
 
-export default ( ideasDb ) => {
+export default (ideaRepository) => {
   /**
    * @param {string} title - The title of the note.
    * @param {string} detail - The content of the note.
@@ -9,12 +10,20 @@ export default ( ideasDb ) => {
    * @param {string} id - id of note in Database.
    * @returns {function} The function that create a new comment
    */
-  async function execute(title, detail, user, date, id){
-    // Check if this idea exist
-    // Validate
+  async function execute(title, detail, user) {
+    // [NOT APPLY] Check if this idea exist
+    // Validate TODO: Use YUP
+    if (!title || !detail || !user) {
+      throw new Error('add-idea validation failed');
+    }
     // Create new Idea
+    let newIdea = new Idea(title, detail, user);
+
     // Persist new Idea
-    return { message: 'idea added succesfully' };
+    newIdea = await ideaRepository.add(newIdea);
+
+    // Returning result
+    return { message: 'idea added succesfully', newIdea };
   }
   return { execute };
 };

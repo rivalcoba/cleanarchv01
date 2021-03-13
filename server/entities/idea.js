@@ -1,9 +1,9 @@
 export default class Idea {
-  constructor(title, details, user, date, id = null) {
+  constructor(id = null, date = null, title, details, user) {
     this.id = id;
+    this.date = date;
     this.title = title;
     this.details = details;
     this.user = user;
-    this.date = date;
   }
 }
