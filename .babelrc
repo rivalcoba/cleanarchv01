@@ -16,7 +16,10 @@
           "@entities": "./server/entities",
           "@use-cases": "./server/use-cases",
           "@common": "./server/common",
-          "@config": "./server/config"
+          "@config": "./server/config",
+          "@contracts": "./server/contracts",
+          "@frameworks": "./server/frameworks",
+          "@controllers": "./server/controllers"
         }
       }
     ]

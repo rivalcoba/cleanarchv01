@@ -1,10 +1,12 @@
 import express from 'express';
+// Importando el controlador
+import HomeController from '@controllers/homeController';
 
-const router = express.Router();
+const HomeRouter = (dependencies) => {
+  const router = express.Router();
+  const homeController = HomeController(dependencies);
+  router.route('/').get(homeController.showHome);
+  return router;
+};
 
-/* GET home page. */
-router.get('/', (req, res) => {
-  res.render('index', { title: 'Express with babel and HRM' });
-});
-
-module.exports = router;
+export default HomeRouter;

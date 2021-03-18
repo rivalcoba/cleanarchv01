@@ -5,7 +5,7 @@ import cookieParser from 'cookie-parser';
 import path from 'path';
 import express from 'express';
 // Routes
-import router from '@routes/index';
+import AppRouter from '@routes/index';
 // Logger
 import logger from '@common/logger';
 // Webpack modules
@@ -13,6 +13,8 @@ import webpack from 'webpack';
 import webpackDevMiddleware from 'webpack-dev-middleware';
 import webpackHotMiddleware from 'webpack-hot-middleware';
 import webpackConfig from '../../webpack.dev.config';
+// Project Dependencies
+import projectDependencies from './project-dependencies';
 
 // export default loggerInstance;
 
@@ -68,7 +70,7 @@ export default ({ app }) => {
   app.use(express.static(path.join(__dirname, '../../public')));
 
   // Adding Routes
-  router.route(app);
+  app.use('/', AppRouter(projectDependencies));
 
   // catch 404 and forward to error handler
   app.use((req, res, next) => {

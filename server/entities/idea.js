@@ -1,5 +1,5 @@
 export default class Idea {
-  constructor(id = null, date = null, title, details, user) {
+  constructor(title, details, user, id, date) {
     this.id = id;
     this.date = date;
     this.title = title;

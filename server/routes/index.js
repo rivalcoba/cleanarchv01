@@ -1,17 +1,16 @@
 /* eslint-disable import/no-unresolved */
+import express from 'express';
 // Indexing Routes
-import home from '@routes/home';
-import users from '@routes/users';
+import HomeRouter from '@routes/home';
 
-const route = (app) => {
-  // home
-  app.use('/', home);
-
-  // users
-  app.use('/users', users);
+const ApiRouter = (dependencies) => {
+  const mainRouter = express.Router();
+  // Building HomeRouter with dependencies
+  const homeRouter = HomeRouter(dependencies);
+  // Routing
+  mainRouter.use(['/', '/home'], homeRouter);
+  return mainRouter;
 };
 
 // Setting Routes to App
-export default {
-  route,
-};
+export default ApiRouter;

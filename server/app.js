@@ -1,5 +1,5 @@
-// ref: https://medium.com/@alameerashraf/nodejs-a-clean-architecture-931898b00d68
-// ref: https://github.com/AlameerAshraf/NodeJS-A-Clean-Archticture-NJCA/blob/master/src/loaders/express.js
+// ref: https://roystack.home.blog/2019/10/22/node-clean-architecture-deep-dive/
+// ref: https://github.com/royib/clean-architecture-node
 import express from 'express';
 import dotenv from 'dotenv';
 import path from 'path';
@@ -9,11 +9,12 @@ dotenv.config({
   path: path.join(__dirname, `../.env.${process.env.NODE_ENV}`),
 });
 
+// Creating Express Instance
 const app = express();
 
 /**
- * Loading Express
+ * Loading Express configurations
  */
 require('./loaders').default({ app });
 
-module.exports = app;
+export default app;

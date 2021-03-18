@@ -6,7 +6,7 @@ export default (dependencies) => {
   const { ideaRepository } = dependencies.DatabaseService;
 
   const addNewIdea = async (req, res, next) => {
-    // INIT USE CASE
+    // Init use case
     const AddIdeaCommand = ideaUsesCases.addIdea(ideaRepository);
 
     // Extract idea from request

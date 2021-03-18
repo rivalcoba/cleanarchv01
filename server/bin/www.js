@@ -2,12 +2,12 @@
 /* eslint-disable import/no-unresolved */
 // Logger
 import logger from '@common/logger';
+import app from '../app';
 /**
  * Module dependencies.
  */
 const debug = require('debug')('expweb-bp:server');
 const http = require('http');
-const app = require('../app');
 
 /**
  * Get port from environment and store in Express.
